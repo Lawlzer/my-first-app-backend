@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+
+# Logs
+logs
+
+
+# Temporary caches
+*.tsbuildinfo
+data
+
+# Environment variables/secrets
+.env
+.env.development
+.env.production
+.env.test
+
+# Build / Generated output
+dist
+
+# Temporary/dev-test locations
+legacy
+temp
+personalTips
+personalTips.txt
+todo
+todo.txt
+
+# Specific to this project

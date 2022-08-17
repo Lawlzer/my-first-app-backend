@@ -5,14 +5,14 @@ import { compareHashAndUnhashed, decrypt, encrypt, hash, parseValidationErrors }
 
 describe('encrypt & decrypt', () => {
 	it('will encrypt a string', async () => {
-		const encrypted = await encrypt('test');
+		const encrypted = encrypt('test');
 		expect(encrypted).toBeTruthy();
 		expect(encrypted).not.toBe('test');
 	});
 
 	it('will decrypt a string', async () => {
-		const encrypted = await encrypt('test');
-		const decrypted = await decrypt(encrypted);
+		const encrypted = encrypt('test');
+		const decrypted = decrypt(encrypted);
 		expect(decrypted).toBe('test');
 	});
 });

@@ -83,7 +83,7 @@ if (typeof SALT_SECRET !== 'string') throw new Error('process.env.SALT_SECRET mu
 if (typeof SALT_SECRET_ROUNDS !== 'number' || isNaN(SALT_SECRET_ROUNDS)) throw new Error('process.env.SALT_SECRET_ROUNDS must be a number.');
 
 export async function hash(text: string) {
-	const SALT = bcrypt.genSaltSync(SALT_SECRET_ROUNDS); // Salts are stored in the encrypted text, and they should be different for each user -- Hence why we generate it here.
+	const SALT = bcrypt.genSaltSync(SALT_SECRET_ROUNDS); // Salts are stored in the encrypted text, and they should be different for each hash -- Hence why we generate it here.
 	return await bcrypt.hash(text, SALT);
 }
 

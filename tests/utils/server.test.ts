@@ -27,6 +27,7 @@ describe('hash & compareHashAndUnhashed', () => {
 	it('will compare a string to a hash', async () => {
 		const hashed = await hash('test');
 		const isValid = await compareHashAndUnhashed('test', hashed);
+		console.log('isValid: ', isValid);
 		expect(isValid).toBeTruthy();
 	});
 

@@ -1,6 +1,7 @@
 // todo test realtime
 // todo move tests to place
 // todo test types
+// todo test build & tests on commit with Husky
 
 import mongoose from 'mongoose';
 

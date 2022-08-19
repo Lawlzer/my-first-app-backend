@@ -12,11 +12,12 @@ import passport from 'passport';
 import path from 'path';
 
 import config from '~/config';
-import {} from '~/types/account';
-import {} from '~/types/index';
-import {} from '~/types/passport';
 import { getMethod } from '~/types/routes';
 import { errorCatcher } from '~/utils/server';
+
+if (typeof mongoose?.connection === 'undefined') throw new Error('mongoose.connection is undefined');
+if (typeof process.env.SESSION_SECRET !== 'string') throw new Error('process.env.SESSION_SECRET is not a string');
+
 const app = express();
 const router = express.Router();
 app.use((req, res, next) => {
@@ -28,9 +29,7 @@ app.use(cookieParser()); // Allow us to use cookies
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-if (typeof mongoose?.connection === 'undefined') throw new Error('mongoose.connection is undefined');
 // Passport initialization
-if (typeof process.env.SESSION_SECRET !== 'string') throw new Error('process.env.SESSION_SECRET is not a string');
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET,
@@ -50,7 +49,7 @@ app.use(
 app.use(passport.initialize()); // Give Passport access to "express-session"
 app.use(passport.session()); // Force Passport to use the session
 
-// app.enable('trust proxy');  // Should be used if you are behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
+// app.enable('trust proxy');  // Should be used if we are behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
 
 // Slow down users who make a lot of requests
 const speedLimiter = slowDown({

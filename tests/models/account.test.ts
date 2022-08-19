@@ -1,3 +1,7 @@
+// todo test realtime
+// todo move tests to place
+// todo test types
+
 import mongoose from 'mongoose';
 
 import Account from '~/models/account';

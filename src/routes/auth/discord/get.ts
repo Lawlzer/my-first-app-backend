@@ -1,6 +1,5 @@
 import { Request, RequestHandler, Response } from 'express';
 
-import config from '~/config';
 import passportDiscord from '~/passport/discord';
 import { AccountBase } from '~/types/account';
 

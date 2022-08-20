@@ -11,4 +11,4 @@ import app from '~/run_server';
 app.listen(config.port, () => {
 	console.info(`Server started on port ${config.port}`);
 });
-export {};
+export { };

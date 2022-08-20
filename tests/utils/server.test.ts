@@ -1,4 +1,3 @@
-import {} from 'validatorjs';
 import Validator from 'validatorjs';
 
 import { compareHashAndUnhashed, decrypt, encrypt, hash, parseValidationErrors } from '~/utils/server';

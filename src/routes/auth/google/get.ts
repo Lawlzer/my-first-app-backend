@@ -1,11 +1,7 @@
-import express from 'express';
 import { Request, RequestHandler, Response } from 'express';
-import path from 'path';
 
-import passportGithub from '~/passport/github';
 import passportGoogle from '~/passport/google';
 import { AccountBase } from '~/types/account';
-import { getMethod } from '~/types/routes';
 
 // The types required for this route (will be shared with the Frontend automatically).
 export interface RequestBody {}

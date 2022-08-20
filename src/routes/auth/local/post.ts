@@ -3,7 +3,6 @@ import { Request, RequestHandler, Response } from 'express';
 import config from '~/config';
 import passportLocal from '~/passport/local';
 import { AccountBase } from '~/types/account';
-import { ensureAuthenticated } from '~/utils/server';
 
 // The types required for this route (Shared between the Frontend and Backend; this will make working together much easier).
 export interface RequestOptions {

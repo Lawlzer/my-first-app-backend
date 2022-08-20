@@ -7,7 +7,6 @@ import Validator from 'validatorjs';
 
 import config from '~/config';
 import { AccountDocument } from '~/types/account';
-import { stringifyOrderGuaranteed } from '~/utils/general';
 
 // Express does not support async/await errors until ATLEAST v5 (which is not yet released, as of writing this). So, we will temporarily wrap all Express calls in a try/catch.
 export async function errorCatcher(req: Request, res: Response, next: NextFunction): Promise<void> {

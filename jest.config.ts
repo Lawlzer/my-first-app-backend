@@ -193,9 +193,9 @@ export default {
 	// transformIgnorePatterns: ['node_modules/(?!variables/.*)'],
 	// moduleDirectories: ['node_modules', 'src', __dirname],
 
-	// Make absolute paths (from ~/src)
+	// Absolute paths
 	moduleNameMapper: {
 		'~/(.*)': '<rootDir>/src/$1',
-		// 	// '@App/(.*)': '<rootDir>/src/$1',
+		'@tests/(.*)': '<rootDir>/tests/$1',
 	},
 };

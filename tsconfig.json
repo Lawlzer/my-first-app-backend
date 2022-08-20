@@ -94,8 +94,8 @@
 
 		"paths": {
 			// If edited here, you must also edit jest.config.ts, and babel.config.js
-			"~/*": ["src/*"],
-			"~": ["src"]
+			"@tests/*": ["tests/*"],
+			"~/*": ["src/*"]
 		}
 	},
 	"exports": ["./src/index.ts"],

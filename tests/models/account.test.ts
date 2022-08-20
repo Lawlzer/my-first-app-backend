@@ -3,11 +3,10 @@
 // todo test types
 // todo test build & tests on commit with Husky
 
+import { clearMongoose, initMongoose } from '@tests/mongooseHandler';
 import mongoose from 'mongoose';
 
 import Account from '~/models/account';
-
-import { clearMongoose, initMongoose } from '../mongooseHandler';
 describe('Account', () => {
 	beforeEach(async () => {
 		await initMongoose();

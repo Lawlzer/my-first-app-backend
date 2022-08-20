@@ -9,8 +9,6 @@ import config from '~/config';
 import { AccountDocument } from '~/types/account';
 import { stringifyOrderGuaranteed } from '~/utils/general';
 
-const fsPromises = fs.promises;
-
 // Express does not support async/await errors until ATLEAST v5 (which is not yet released, as of writing this). So, we will temporarily wrap all Express calls in a try/catch.
 export async function errorCatcher(req: Request, res: Response, next: NextFunction): Promise<void> {
 	try {
@@ -25,16 +23,16 @@ export async function errorCatcher(req: Request, res: Response, next: NextFuncti
 		if (!config.production) return;
 
 		await ensureExists(config.paths.root + '/logs/errors');
-		let existingFiles = (await fsPromises.readdir(config.paths.root + '/logs/errors')).sort((a, b) => parseInt(a) - parseInt(b));
+		let existingFiles = (await fs.readdir(config.paths.root + '/logs/errors')).sort((a, b) => parseInt(a) - parseInt(b));
 		if (existingFiles.length === 0) existingFiles = ['0.txt'];
 
 		const nextFileName = String(parseInt(existingFiles[existingFiles.length - 1].split('.')[0]) + 1);
 		// if (!err.stack) err.stack = 'No stack trace available';
 		if (!(err instanceof Error)) {
-			await fsPromises.writeFile(config.paths.root + '/logs/errors/' + nextFileName + '.txt', 'WARNING: This error was not instanceof Error, so it does not have a stack.\n' + JSON.stringify(err));
+			await fs.writeFile(config.paths.root + '/logs/errors/' + nextFileName + '.txt', 'WARNING: This error was not instanceof Error, so it does not have a stack.\n' + JSON.stringify(err));
 			return;
 		}
-		await fsPromises.writeFile(config.paths.root + '/logs/errors/' + nextFileName + '.txt', err.stack || '');
+		await fs.writeFile(config.paths.root + '/logs/errors/' + nextFileName + '.txt', err.stack || '');
 	}
 }
 

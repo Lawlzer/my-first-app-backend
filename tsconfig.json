@@ -100,5 +100,5 @@
 	},
 	"exports": ["./src/index.ts"],
 	"include": ["src", "test-utils"],
-	"exclude": ["node_modules", "scripts", "tools", "webpack", "jest", "legacy", "temp", "dist", ".env", "coverage"]
+	"exclude": ["node_modules", "scripts", "tools", "webpack", "jest", "legacy", "temp", "dist", ".env", "**/*.test.ts"]
 }

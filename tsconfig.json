@@ -94,11 +94,11 @@
 
 		"paths": {
 			// If edited here, you must also edit jest.config.ts, and babel.config.js
-			"@tests/*": ["tests/*"],
-			"~/*": ["src/*"]
+			"~/*": ["src/*"],
+			"@test-utils/*": ["test-utils/*"]
 		}
 	},
 	"exports": ["./src/index.ts"],
-	"include": ["src", "tests"],
+	"include": ["src", "test-utils"],
 	"exclude": ["node_modules", "scripts", "tools", "webpack", "jest", "legacy", "temp", "dist", ".env", "coverage"]
 }

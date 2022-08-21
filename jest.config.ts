@@ -59,10 +59,10 @@ export default {
 	// forceCoverageMatch: [],
 
 	// A path to a module which exports an async function that is triggered once before all test suites
-	globalSetup: './tests/testSetup.ts',
+	globalSetup: './test-utils/testSetup.ts',
 
 	// A path to a module which exports an async function that is triggered once after all test suites
-	globalTeardown: './tests/testTeardown.ts',
+	globalTeardown: './test-utils/testTeardown.ts',
 
 	// A set of global variables that need to be available in all test environments
 	globals: {},
@@ -196,6 +196,6 @@ export default {
 	// Absolute paths
 	moduleNameMapper: {
 		'~/(.*)': '<rootDir>/src/$1',
-		'@tests/(.*)': '<rootDir>/tests/$1',
+		'@test-utils/(.*)': '<rootDir>/test-utils/$1',
 	},
 };

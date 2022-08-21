@@ -9,7 +9,7 @@
 	"scripts": {
 		"build": "npm run clean && npm run build:types && npm run build:js",
 		"build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --ignore \"**/*.test.ts\" --source-maps true",
-		"build:types": "tsc",
+		"build:types": "tsc -p tsconfig-build.json",
 		"clean": "rimraf ./dist",
 		"lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:sort-imports",
 		"lint:eslint": "eslint . --cache --fix --cache-location ./temp/eslint-cache",

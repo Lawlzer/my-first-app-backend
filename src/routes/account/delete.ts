@@ -8,17 +8,23 @@ export interface RequestOptions {
 	query: Query;
 }
 
-export interface RequestBody {}
+export interface RequestBody {
+	[key: string]: never;
+}
 
+// Required in the URL (/:PARAM)
 export interface Params {
-	// Required in the URL (/:PARAM)
+	[key: string]: never;
 }
 
+// At the end of the URL (?foo=bar) (ALWAYS strings!)
 export interface Query {
-	// At the end of the URL (?foo=bar) (ALWAYS strings!)
+	[key: string]: never;
 }
 
-export interface RequestResponse {}
+export interface RequestResponse {
+	[key: string]: never;
+}
 
 // Delete my account
 export const middlewares: RequestHandler[] = [ensureAuthenticated];

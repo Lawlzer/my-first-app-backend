@@ -4,11 +4,6 @@ import config from '~/config';
 import passportGithub from '~/passport/github';
 import { AccountBase } from '~/types/account';
 
-// The types required for this route (will be shared with the Frontend automatically).
-export interface RequestBody {}
-export interface RequestOptions {}
-export interface RequestResponse {}
-
 // The types required for this route (Shared between the Frontend and Backend; this will make working together much easier).
 export interface RequestOptions {
 	params: Params;
@@ -19,15 +14,19 @@ export interface RequestBody {
 	account: AccountBase;
 }
 
+// Required in the URL (/:PARAM)
 export interface Params {
-	// Required in the URL (/:PARAM)
+	[key: string]: never;
 }
 
+// At the end of the URL (?foo=bar) (ALWAYS strings!)
 export interface Query {
-	// At the end of the URL (?foo=bar) (ALWAYS strings!)
+	[key: string]: never;
 }
 
-export interface RequestResponse {}
+export interface RequestResponse {
+	[key: string]: never;
+}
 
 // Github will redirect us to this page -> we redirect the user back to the auth-callback route.
 export const middlewares: RequestHandler[] = [passportGithub.authenticate('github', { failureRedirect: config.frontend.loginRoute })];

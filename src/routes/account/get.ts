@@ -13,12 +13,14 @@ export interface RequestBody {
 	account: AccountBase;
 }
 
+// Required in the URL (/:PARAM)
 export interface Params {
-	// Required in the URL (/:PARAM)
+	[key: string]: never;
 }
 
+// At the end of the URL (?foo=bar) (ALWAYS strings!)
 export interface Query {
-	// At the end of the URL (?foo=bar) (ALWAYS strings!)
+	[key: string]: never;
 }
 
 export interface RequestResponse {

@@ -30,9 +30,4 @@ export interface RequestResponse {
 // The user is sent to here from the FE, and Passport (GitHub) will redirect them to GitHub for OAuth.
 // We don't actually have to do anything here: the passport middleware will have already redirected the user.
 export const middlewares: RequestHandler[] = [passportGoogle.authenticate('google', { scope: ['email profile'] })];
-export default async (req: Request, res: Response) => {
-	// Tell TypeScript the types of our inputs
-	const body: RequestBody = req.body;
-	const params: Params = req.params as unknown as Params;
-	const query: Query = req.query as unknown as Query;
-};
+export default async (req: Request<Params, RequestResponse, RequestBody, Query>, res: Response<RequestResponse>) => {};

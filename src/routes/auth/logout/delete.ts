@@ -30,12 +30,7 @@ export interface RequestResponse {
 
 // Get my account
 export const middlewares: RequestHandler[] = [ensureAuthenticated];
-export default async (req: Request, res: Response) => {
-	// Tell TypeScript the types of our inputs
-	const body: RequestBody = req.body;
-	const params: Params = req.params as unknown as Params;
-	const query: Query = req.query as unknown as Query;
-
+export default async (req: Request<Params, RequestResponse, RequestBody, Query>, res: Response<RequestResponse>) => {
 	// req.session = null;
 
 	req.logout({ keepSessionInfo: false }, () => {});

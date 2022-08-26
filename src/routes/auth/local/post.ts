@@ -29,11 +29,6 @@ export interface RequestResponse {
 }
 
 function localAuthMyCallback(req: Request, res: Response, next: RequestHandler) {
-	// Tell TypeScript the types of our inputs
-	const body: RequestBody = req.body;
-	const params: Params = req.params as unknown as Params;
-	const query: Query = req.query as unknown as Query;
-
 	passportLocal.authenticate('local', async function (err, user, info) {
 		if (err) return res.status(400).json({ error: err });
 		res.redirect(config.frontend.authCallbackRoute);
@@ -42,4 +37,4 @@ function localAuthMyCallback(req: Request, res: Response, next: RequestHandler) 
 
 // Because this is a local strategy, we have to implement the callback manually.
 export const middlewares: RequestHandler[] = [localAuthMyCallback];
-export default async (req: Request, res: Response) => {};
+export default async (req: Request<Params, RequestResponse, RequestBody, Query>, res: Response<RequestResponse>) => {};

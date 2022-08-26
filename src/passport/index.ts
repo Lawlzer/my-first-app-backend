@@ -1,4 +1,4 @@
-import { } from '@lawlzer/helpers';
+import {} from '@lawlzer/helpers';
 import { Request } from 'express';
 import passport from 'passport';
 

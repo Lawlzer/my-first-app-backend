@@ -84,7 +84,7 @@ app.use(cors({ origin: true, credentials: true }));
 
 		// If a folder contains [text], replace it with a :param
 		const finalRoutePath = routePath
-			.map((singleFolder) => {
+			.map((singleFolder: string) => {
 				if (singleFolder.includes('[') && singleFolder.includes(']')) return singleFolder.replace('[', ':').replace(']', '');
 
 				return singleFolder;

@@ -1,11 +1,11 @@
-import { returnRandomCharacters } from '@lawlzer/helpers';
+import { getRandomCharacters } from '@lawlzer/helpers';
 import mongoose from 'mongoose';
 import mongooseEncryption from 'mongoose-encryption';
 
 import { AccountDocument } from '~/types/account';
 
 const AccountSchema = new mongoose.Schema<AccountDocument>({
-	_id: { type: String, default: () => returnRandomCharacters(50, { symbols: false }) }, // normally _id is an ObjectId, but that's a pain to work with - so we replace it with a random String
+	_id: { type: String, default: () => getRandomCharacters(50, { symbols: false }) }, // normally _id is an ObjectId, but that's a pain to work with - so we replace it with a random String
 
 	// When creating an account with Passport, sometimes the information can be weird.  If we're not given the information from Passport, the user will be redirected
 	// to finish their account creation.

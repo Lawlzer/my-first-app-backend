@@ -1,12 +1,12 @@
 // Documentation explained in src/types/passport.ts -> LocalStrategySource
-import { returnRandomCharacters } from '@lawlzer/helpers';
+import { getRandomCharacters } from '@lawlzer/helpers';
 import mongoose from 'mongoose';
 import mongooseEncryption from 'mongoose-encryption';
 
 import { LocalStrategySource } from '~/types/passport';
 
 const LocalStrategySourceSchema = new mongoose.Schema<LocalStrategySource>({
-	_id: { type: String, default: () => returnRandomCharacters(50, { symbols: false }) }, // normally _id is an ObjectId, but that's a pain to work with - so we replace it with a random String
+	_id: { type: String, default: () => getRandomCharacters(50, { symbols: false }) }, // normally _id is an ObjectId, but that's a pain to work with - so we replace it with a random String
 
 	password: { type: String, required: true },
 

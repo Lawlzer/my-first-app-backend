@@ -8,6 +8,7 @@ logs
 # Temporary caches
 *.tsbuildinfo
 data
+target
 
 # Environment variables/secrets
 .env

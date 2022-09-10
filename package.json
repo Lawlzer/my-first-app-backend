@@ -10,7 +10,7 @@
 		"build": "npm run clean && npm run build:types && npm run build:js",
 		"build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --ignore \"**/*.test.ts\" --source-maps true --config-file ./config/babel.config.js",
 		"build:types": "tsc --project tsconfig-build.json && tsc-alias --project tsconfig-build.json",
-		"buildRoutes": "npm run clean && npm run build:types && ts-node ./scripts/buildRouteTypes.ts --inputPath=./dist/routes --outputPath=./routeTypes/routes",
+		"buildRoutes": "npm run clean && npm run build:types && ts-node ./scripts/buildRouteTypes.ts --inputPath=./dist/routes --outputPath=./routeTypes",
 		"clean": "rimraf ./dist && rimraf ./routeTypes",
 		"lint": "npm run lint:eslint && npm run lint:prettier",
 		"lint:eslint": "eslint . --cache --fix --cache-location ./temp/eslint-cache --ignore-path ./.gitignore --config ./config/.eslintrc.js",

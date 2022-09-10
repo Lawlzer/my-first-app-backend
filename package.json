@@ -10,7 +10,8 @@
 		"build": "npm run clean && npm run build:types && npm run build:js",
 		"build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --ignore \"**/*.test.ts\" --source-maps true --config-file ./config/babel.config.js",
 		"build:types": "tsc --project tsconfig-build.json && tsc-alias --project tsconfig-build.json",
-		"clean": "rimraf ./dist",
+		"buildRoutes": "npm run clean && npm run build:types && ts-node ./scripts/buildRouteTypes.ts --inputPath=./dist/routes --outputPath=./routeTypes/routes",
+		"clean": "rimraf ./dist && rimraf ./routeTypes",
 		"lint": "npm run lint:eslint && npm run lint:prettier",
 		"lint:eslint": "eslint . --cache --fix --cache-location ./temp/eslint-cache --ignore-path ./.gitignore --config ./config/.eslintrc.js",
 		"lint:eslint:debug": "cross-env TIMING=1 && eslint .",
@@ -22,11 +23,12 @@
 		"prepare": "husky install",
 		"start": "cross-env NODE_ENV=development ts-node-dev --respawn --watch * --ignore-watch node_modules --transpile-only -r tsconfig-paths/register src/index.ts",
 		"start:production": "cross-env NODE_ENV=production node dist/index",
+		"temp": "tsc --project ./tsconfig-types.json .\\src\\routes\\account\\get.ts",
 		"test": "cross-env NODE_ENV=test jest --clearCache && jest --config ./config/jest.config.ts"
 	},
 	"prettier": "./config/.prettierrc.js",
 	"dependencies": {
-		"@lawlzer/helpers": "^3.0.8",
+		"@lawlzer/helpers": "^3.0.9",
 		"@oauth-everything/passport-discord": "^1.0.2",
 		"axios": "^0.27.2",
 		"connect-mongo": "^4.6.0",

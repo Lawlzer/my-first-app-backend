@@ -18,6 +18,7 @@ target
 
 # Build / Generated output
 dist
+routeTypes
 
 # Temporary/dev-test locations
 legacy

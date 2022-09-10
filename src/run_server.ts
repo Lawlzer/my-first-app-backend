@@ -66,7 +66,7 @@ app.use(cors({ origin: true, credentials: true }));
 
 // Import every route recursively
 (async () => {
-	const allRoutes = await getAllFiles(path.join(config.paths.code, 'routes'));
+	const allRoutes = await getAllFiles(path.join(__dirname, 'routes'));
 	let badExtensions = ['.map', '.d.ts', '.test.ts'];
 
 	for (const filePath of allRoutes) {

@@ -102,6 +102,6 @@
 		}
 	},
 	"exports": ["./src/index.ts"],
-	"include": ["src"],
-	"exclude": ["node_modules", "scripts", "tools", "webpack", "jest", "legacy", "temp", "dist", ".env"]
+	"include": ["src", "test-utils"],
+	"exclude": ["node_modules", "scripts", "tools", "webpack", "jest", "legacy", "temp", "dist", ".env", "scripts", "routeTypes"]
 }

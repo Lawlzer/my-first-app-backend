@@ -2,8 +2,6 @@ import dotenv from 'dotenv';
 import fs from 'fs-extra';
 import path from 'path';
 
-import {} from '~/config';
-
 // Jest does not allow us to use dotenv, mongoose, or app.listen() in tests -- However, on Jest initialization, it's fine.
 // So, we must run initialization code (dotenv, mongoose, app.listen()) here.  Then, for Jest supertests, we can simply import run_server.ts :)
 

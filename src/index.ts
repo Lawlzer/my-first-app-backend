@@ -2,7 +2,7 @@
 // Additionally, Babel ignores the order of "imports", and will run files that require process.env first, BEFORE running this file.
 // So, we must move dotenv imports (and Mongo) there, which is ran FIRST.
 
-import '~/initEverything';
+import '~/init';
 
 import config from '~/config'; // If we import config at the very top, we won't have injected the .env variables first.
 import app from '~/run_server';

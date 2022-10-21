@@ -75,6 +75,8 @@ app.use(cors({ origin: true, credentials: true }));
 			continue;
 		}
 
+		console.log('abc'.replaceAll('a', 'b'));
+		console.log('filePath: ', filePath);
 		// Get the path to the file, from "/routes" to the end, not including the file extension.
 		let routePath = filePath
 			.replaceAll('\\', '/')

@@ -14,6 +14,7 @@
 		"clean": "rimraf ./dist && rimraf ./routeTypes",
 		"lint": "npm run lint:eslint && npm run lint:prettier",
 		"lint:eslint": "eslint . --cache --fix --cache-location ./temp/eslint-cache --ignore-path ./.gitignore --config ./config/.eslintrc.js",
+		"lint:eslint:commit": "eslint . --cache --fix --cache-location ./temp/eslint-cache --ignore-path ./.gitignore --config ./config/.eslintrc.commit.js",
 		"lint:eslint:debug": "cross-env TIMING=1 && eslint .",
 		"lint:prettier": "prettier . --write --config ./config/.prettierrc.js --ignore-path ./.gitignore",
 		"lint:prettier:debug": "prettier . --write --config ./config/.prettierc.js --ignore-path ./.gitignore",

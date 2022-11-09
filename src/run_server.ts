@@ -20,10 +20,10 @@ if (typeof process.env.SESSION_SECRET !== 'string') throw new Error('process.env
 
 const app = express();
 const router = express.Router();
-app.use((req, res, next) => {
-	req.receivedAt = Date.now();
-	next();
-});
+// app.use((req, res, next) => {
+// 	req.receivedAt = Date.now();
+// 	next();
+// });
 
 app.use(cookieParser()); // Allow us to use cookies
 
@@ -67,7 +67,7 @@ app.use(cors({ origin: true, credentials: true }));
 // Import every route recursively
 (async () => {
 	const allRoutes = await getAllFiles(path.join(__dirname, 'routes'));
-	let badExtensions = ['.map', '.d.ts', '.test.ts'];
+	const badExtensions = ['.map', '.d.ts', '.test.ts'];
 
 	for (const filePath of allRoutes) {
 		if (badExtensions.some((extension) => filePath.endsWith(extension))) {
@@ -75,10 +75,8 @@ app.use(cors({ origin: true, credentials: true }));
 			continue;
 		}
 
-		console.log('abc'.replaceAll('a', 'b'));
-		console.log('filePath: ', filePath);
 		// Get the path to the file, from "/routes" to the end, not including the file extension.
-		let routePath = filePath
+		const routePath = filePath
 			.replaceAll('\\', '/')
 			.substring(filePath.indexOf('routes') + 'routes'.length + 1)
 			.split('/');
@@ -103,12 +101,13 @@ app.use(cors({ origin: true, credentials: true }));
 			router[method](`/${finalRoutePath}`, [...routerModule.middlewares], async (req: Request, res: Response) => {
 				await errorCatcher(req, res, async () => {
 					await routerModule.default(req, res);
+					console.debug('We have successfully initialized the route: ', filePath);
 				});
 			});
 
 			app.use(`/`, router);
 		} catch (e) {
-			console.log('run_server.ts, e: ', e);
+			console.info('run_server.ts, e: ', e);
 			console.info('We crashed attempting to import a file.  We probably forgot a module.exports at the bottom:\n' + filePath);
 			process.exit();
 		}

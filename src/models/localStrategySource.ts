@@ -6,7 +6,7 @@ import mongooseEncryption from 'mongoose-encryption';
 import { LocalStrategySource } from '~/types/passport';
 
 const LocalStrategySourceSchema = new mongoose.Schema<LocalStrategySource>({
-	_id: { type: String, default: () => getRandomCharacters(50, { upperCase: true, lowerCase: true, symbols: true, numbers: true }) }, // normally _id is an ObjectId, but that's a pain to work with - so we replace it with a random String
+	_id: { type: String, default: () => getRandomCharacters(50, { letters: true, symbols: true, numbers: true }) }, // normally _id is an ObjectId, but that's a pain to work with - so we replace it with a random String
 
 	password: { type: String, required: true },
 

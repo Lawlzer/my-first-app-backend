@@ -20,10 +20,10 @@ if (typeof process.env.SESSION_SECRET !== 'string') throw new Error('process.env
 
 const app = express();
 const router = express.Router();
-// app.use((req, res, next) => {
-// 	req.receivedAt = Date.now();
-// 	next();
-// });
+app.use((req, res, next) => {
+	req.receivedAt = Date.now();
+	next();
+});
 
 app.use(cookieParser()); // Allow us to use cookies
 

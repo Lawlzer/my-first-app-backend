@@ -28,6 +28,8 @@ export interface RequestResponse {
 }
 
 // The user is sent to here from the FE, and Passport (Discord) will redirect them to Discord for OAuth.
-// We don't actually have to do anything here: the passport middleware will have already redirected the user.
 export const middlewares: RequestHandler[] = [passportDiscord.authenticate('discord', {})];
-export default async (req: Request<Params, RequestResponse, RequestBody, Query>, res: Response<RequestResponse>) => {};
+export default async (req: Request<Params, RequestResponse, RequestBody, Query>, res: Response<RequestResponse>) => {
+	// the Passport middleware will have already redirected the user
+	return;
+};

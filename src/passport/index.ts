@@ -1,4 +1,3 @@
-import {} from '@lawlzer/helpers';
 import { Request } from 'express';
 import passport from 'passport';
 
@@ -57,7 +56,7 @@ export async function handleSocialAuth(req: Request, initialProfile: DefaultProf
 	// We need to make a new account -- If the user is already "logged in" (has a req.user), then they're simply trying to link their account.
 	if (!account && req.user && req.isAuthenticated()) {
 		account = req.user as AccountDocument;
-		console.log('Account auto-merged!');
+		console.info('An account has been automatically merged.');
 	}
 
 	// Thirdly, just create the account.

@@ -5,14 +5,16 @@ import mongooseEncryption from 'mongoose-encryption';
 import { AccountDocument } from '~/types/account';
 
 const AccountSchema = new mongoose.Schema<AccountDocument>({
-	_id: { type: String, default: () => getRandomCharacters(50, { upperCase: true, lowerCase: true, symbols: true, numbers: true }) }, // normally _id is an ObjectId, but that's a pain to work with - so we replace it with a random String
+	_id: { type: String, default: () => getRandomCharacters(50, { letters: true, symbols: true, numbers: true }) }, // normally _id is an ObjectId, but that's a pain to work with - so we replace it with a random String
 
 	// When creating an account with Passport, sometimes the information can be weird.  If we're not given the information from Passport, the user will be redirected
 	// to finish their account creation.
 	username: { type: String, required: false }, // Same as under, we will not absolutely require it.
 	email: { type: String, required: false }, // Sometimes, the user will not have an email (e.g Github).
 
-	// We use an array of objects, because it's more easier (more modular) to add new login sources in the future.
+	// We use an array of objects, because it's easier (more modular) to add new login sources in the future.
+	// Additionally, users are now allowed to have multiple of the same source (e.g Discord and Discord)... but why would we want this?
+	// Honestly, this will probably be removed in the future.
 	loginSources: [
 		{
 			source: { type: String, required: true },

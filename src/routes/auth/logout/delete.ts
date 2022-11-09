@@ -33,7 +33,9 @@ export const middlewares: RequestHandler[] = [ensureAuthenticated];
 export default async (req: Request<Params, RequestResponse, RequestBody, Query>, res: Response<RequestResponse>) => {
 	// req.session = null;
 
-	req.logout({ keepSessionInfo: false }, () => {});
+	req.logout({ keepSessionInfo: false }, () => {
+		return;
+	});
 	res.redirect(config.frontend.loginRoute);
 	return res.status(201);
 };

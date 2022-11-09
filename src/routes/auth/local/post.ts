@@ -37,4 +37,7 @@ function localAuthMyCallback(req: Request, res: Response, next: RequestHandler) 
 
 // Because this is a local strategy, we have to implement the callback manually.
 export const middlewares: RequestHandler[] = [localAuthMyCallback];
-export default async (req: Request<Params, RequestResponse, RequestBody, Query>, res: Response<RequestResponse>) => {};
+export default async (req: Request<Params, RequestResponse, RequestBody, Query>, res: Response<RequestResponse>) => {
+	// the middleware will have already redirected the user
+	return;
+};

@@ -1,5 +1,5 @@
 import { ensureExists, objectMap } from '@lawlzer/helpers';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import { NextFunction, Request, Response } from 'express';
 import fs from 'fs-extra';
@@ -84,6 +84,6 @@ export async function hash(input: string) {
 	// Salts are stored in the encrypted text, and they should be different for each generated text -- Hence why we generate it here. (This prevents rainbow table attacks)
 	return await bcrypt.hash(input, await bcrypt.genSalt(SALT_SECRET_ROUNDS));
 }
-export async function compareHashAndUnhashed(unhashed: string | Buffer, hashed: string) {
+export async function compareHashAndUnhashed(unhashed: string, hashed: string) {
 	return await bcrypt.compare(unhashed, hashed);
 }
